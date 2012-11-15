@@ -9,12 +9,8 @@ puts ->() {
 
   y =
     ->(improver) {
-      ->(gen) {
-        gen.(gen)
-      }.(
-        ->(gen) {
-          improver.(->(v) { gen.(gen).(v) })
-        }
+      ->(gen) { gen.(gen) }.(
+        ->(gen) { improver.(->(v) { gen.(gen).(v) }) }
       )
     }
 
