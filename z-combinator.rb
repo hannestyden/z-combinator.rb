@@ -7,8 +7,10 @@ puts ->() {
   }
 
   f0 = fact_improver.(error)
-  f0.(0)
+  f1 = fact_improver.(f0)
+  f2 = fact_improver.(f1)
+  f2.(2)
 
 }.()
 
-# >> 1
+# >> 2
