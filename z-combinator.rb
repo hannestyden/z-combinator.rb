@@ -18,7 +18,8 @@ puts ->() {
       )
     }
 
-  y.(fact_improver).(5)
+  fact = y.(fact_improver)
+  fact.(5)
 
 }.()
 
