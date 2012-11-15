@@ -8,13 +8,13 @@ puts ->() {
       ->(x) { f.(->(*v) { x.(x).(*v) }) } )
     }
 
-  fact_improver =
+  gcd_improver =
     ->(partial) {
-      ->(n) { n.zero? ? 1 : n * partial.(n - 1) }
+      ->(n, m) { m.zero? ? n : partial.(m, n.remainder(m)) }
     }
 
-  z.(fact_improver).(5)
+  z.(gcd_improver).(259, 111)
 
 }.()
 
-# >> 120
+# >> 37
