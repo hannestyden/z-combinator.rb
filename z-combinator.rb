@@ -7,15 +7,18 @@ puts ->() {
       ->(n) { n.zero? ? 1 : n * partial.(n - 1) }
     }
 
-  ->(improver) {
-    ->(gen) {
-      gen.(gen)
-    }.(
+  y =
+    ->(improver) {
       ->(gen) {
-        improver.(->(v) { gen.(gen).(v) })
-      }
-    )
-  }.(fact_improver).(5)
+        gen.(gen)
+      }.(
+        ->(gen) {
+          improver.(->(v) { gen.(gen).(v) })
+        }
+      )
+    }
+
+  y.(fact_improver).(5)
 
 }.()
 
