@@ -1,6 +1,8 @@
 puts ->() {
 
-  ->() {
+  error = ->(n) { throw "SHOULD NEVER BE CALLED" }
+
+  ->(code) {
     ->(gen) {
       gen.(gen)
     }.(
@@ -10,7 +12,7 @@ puts ->() {
         }.(->(v) { gen.(gen).(v) })
       }
     )
-  }.().(5)
+  }.(error).(5)
 
 }.()
 
