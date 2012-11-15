@@ -8,13 +8,26 @@ puts ->() {
       ->(x) { f.(->(*v) { x.(x).(*v) }) } )
     }
 
-  fact_improver =
+  bin_search_improver =
     ->(partial) {
-      ->(n) { n.zero? ? 1 : n * partial.(n - 1) }
+      ->(haystack, needle, start, stop) do
+        mid = start + (stop - start) / 2
+
+        if (start > stop)
+          -1
+        elsif (haystack[mid] == needle)
+          mid
+        elsif (haystack[mid] > needle)
+          partial.(haystack, needle, start, mid - 1);
+        else
+          partial.(haystack, needle, mid + 1, stop);
+        end
+      end
     }
 
-  z.(fact_improver).(5)
-
+    ->(haystack, needle) {
+      z.(bin_search_improver).(haystack, needle, 0, haystack.size - 1)
+    }.([ 1, 2, 4, 5 ], 1)
 }.()
 
-# >> 120
+# >> 0
