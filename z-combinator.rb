@@ -11,9 +11,8 @@ puts ->() {
   # Z Combinator
   z =
     ->(f) {
-      ->(x) { x.(x) }.(
-        ->(x) { f.(->(v) { x.(x).(v) }) }
-      )
+      ->(x) { f.(->(v) { x.(x).(v) }) }.(
+      ->(x) { f.(->(v) { x.(x).(v) }) } )
     }
 
   # Z calculates the fixpoint of an improver function.
