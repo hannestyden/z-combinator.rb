@@ -7,16 +7,17 @@ puts ->() {
       ->(n) { n.zero? ? 1 : n * partial.(n - 1) }
     }
 
-  # Y combinator
-  y =
+  # Applicative Order Y combinator
+  # Z Combinator
+  z =
     ->(f) {
       ->(x) { x.(x) }.(
         ->(x) { f.(->(v) { x.(x).(v) }) }
       )
     }
 
-  # Y calculates the fixpoint of an improver function.
-  fact = y.(fact_improver)
+  # Z calculates the fixpoint of an improver function.
+  fact = z.(fact_improver)
 
   # `fact` is the fixpoint of `fact_improver`.
   fact = fact_improver.(fact)
