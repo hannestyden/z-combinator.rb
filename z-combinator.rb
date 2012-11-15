@@ -8,13 +8,13 @@ puts ->() {
       ->(x) { f.(->(v) { x.(x).(v) }) } )
     }
 
-  fact_improver =
+  fib_improver =
     ->(partial) {
-      ->(n) { n.zero? ? 1 : n * partial.(n - 1) }
+      ->(n) { n <= 2 ? n : partial.(n - 1) + partial.(n - 2) }
     }
 
-  z.(fact_improver).(5)
+  z.(fib_improver).(5)
 
 }.()
 
-# >> 120
+# >> 8
