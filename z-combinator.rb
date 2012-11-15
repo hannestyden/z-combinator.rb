@@ -6,11 +6,27 @@ puts ->() {
     ->(n) { n.zero? ? 1 : n * partial.(n - 1) }
   }
 
-  f0 = fact_improver.(error)
-  f1 = fact_improver.(f0)
-  f2 = fact_improver.(f1)
-  f2.(2)
+  fx =
+    fact_improver.(
+      fact_improver.(
+        fact_improver.(
+          fact_improver.(
+            fact_improver.(
+              fact_improver.(
+                fact_improver.(
+                  fact_improver.(
+                    fact_improver.(
+                      fact_improver.(
+                        fact_improver.(
+                          fact_improver.(
+                            fact_improver.(
+                              fact_improver.(
+                                fact_improver.(
+                                  error
+    ) ) ) ) ) ) ) ) ) ) ) ) ) ) )
+
+  fx.(14)
 
 }.()
 
-# >> 2
+# >> 87178291200
