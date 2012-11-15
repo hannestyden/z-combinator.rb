@@ -15,6 +15,10 @@ puts ->() {
     }
 
   fact = y.(fact_improver)
+
+  # `fact` is the fixpoint of `fact_improver`.
+  fact = fact_improver.(fact)
+
   fact.(5)
 
 }.()
